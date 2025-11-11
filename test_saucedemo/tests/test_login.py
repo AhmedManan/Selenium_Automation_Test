@@ -1,21 +1,25 @@
-from pages.login_page import LoginPage
-from pages.inventory_page import InventoryPage
+from base.base_test import BaseTest
 
-def test_login_logout_valid_user(driver):
-    login_page = LoginPage(driver)
-    inventory_page = InventoryPage(driver)
+class TestLogin(BaseTest):
 
-    # Step 1: Open login page
-    login_page.open_login_page()
+    def test_valid_login_and_logout(self):
+        # Open Login Page
+        self.login_page.open_login_page()
 
-    # Step 2: Perform login
-    login_page.login("standard_user", "secret_sauce")
+        # Login
+        self.login_page.login("standard_user", "secret_sauce")
 
-    # Step 3: Verify inventory page
-    assert inventory_page.is_inventory_displayed(), "Inventory page not displayed after login!"
+        # Verify inventory
+        assert self.inventory_page.is_inventory_displayed(), "Inventory not visible after login"
 
-    # Step 4: Logout
-    inventory_page.logout()
+        # Logout
+        self.inventory_page.logout()
 
-    # Step 5: Verify back on login page
-    assert "saucedemo.com" in driver.current_url
+        # Verify redirection to login
+        assert "saucedemo.com" in self.driver.current_url
+
+    def test_invalid_login(self):
+        self.login_page.open_login_page()
+        self.login_page.login("wrong_user", "wrong_pass")
+        error_message = self.login_page.get_error_message()
+        assert "Username and password do not match" in error_message or "Epic sadface" in error_message
