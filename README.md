@@ -1,6 +1,6 @@
 # Selenium Automation Test
 
-In this repository I have conduct Automation tests on https://www.saucedemo.com/ web application. To conduct the test I used Python, Pytest, Selenium & POM (page object model) framework.
+In this repository I have conduct Automation tests on multiple web application. To conduct the test I used Python, Pytest, Selenium & POM (page object model) framework.
 
 ## 🔎 View Live Report
 
