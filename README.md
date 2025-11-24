@@ -10,6 +10,17 @@ In this repository I have conduct Automation tests on multiple web application. 
 
 ## Table Of Content
 - [🔎 View Live Report](#-view-live-report)
+- [Test Cases](#-test-cases)
+    - [Test Execution Videos](#-test-execution-videos)
+    - [Test Case Details](#-test-case-details)
+- [Report Genaration](#-report-genaration)
+
+
+## Test Cases
+
+### Test Execution Videos
+
+### Test Case Details
 
 ## Report Genaration
 
