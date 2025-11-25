@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from ..base_pages.index_page import IndexPage
 from ..conftest import chrome
 from ..utilities.read_proparties import ReadConfig
+from ..utilities.custom_logger import LogMaker
 
 
 
@@ -12,6 +13,7 @@ class TestIndexPage:
     username = ReadConfig.get_username()
     password = ReadConfig.get_password()
     invalid_login_data = ReadConfig.get_invalid_login_data()
+    logger = LogMaker.generate_log()
 
 
     def test_title_verification(self, chrome):
@@ -35,7 +37,8 @@ class TestIndexPage:
             assert False
 
     @pytest.mark.parametrize("username, password", invalid_login_data)
-    def test_invalid_admin_login(self, edge, username, password) ->None:
+    def test_invalid_login(self, edge, username, password) ->None:
+        self.logger.info("-----Testing invalid login------")
         driver = edge
         driver.get(self.page_url)
         self.index_page = IndexPage(driver)
