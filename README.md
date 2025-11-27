@@ -20,7 +20,12 @@ In this repository I have conduct Automation tests on multiple web application, 
 
 ### Test Execution Videos
 
+| Serial | Test Script Name / Details        | Execution Video |
+| ------ | --------------------------------- | --------------- |
+| 1      | Test Demoblaze Login              | [Base](/videos/base.mp4) |
+
 ### Test Case Details
+#### Test DemoBlaze Login Module
 
 ## Report Genaration
 
