@@ -1,0 +1,34 @@
+name: Python Selenium Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual run
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4 # 1. Check out code
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    # 2. Install Chrome and WebDriver (using a pre-built action is often easier)
+    - name: Install Google Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
+    - name: Install Dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt # Include selenium and webdriver-manager (optional but helpful)
+
+    - name: Execute Selenium Script
+      run: python your_test_script.py

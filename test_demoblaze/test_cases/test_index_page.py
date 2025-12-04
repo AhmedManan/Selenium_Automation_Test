@@ -36,13 +36,13 @@ class TestIndexPage:
         if self.index_page.get_logged_in_user() == f"Welcome {self.username}":
             assert True
         else:
-            driver.save_screenshot('.\\test_demoblaze\\screenshots\\test_admin_login.png')
+            driver.save_screenshot('test_demoblaze/screenshots/test_admin_login.png')
             assert False
 
     @pytest.mark.parametrize("username, password", invalid_login_data)
-    def test_invalid_login(self, edge, username, password) ->None:
+    def test_invalid_login(self, chrome, username, password) ->None:
         self.logger.info("-----Testing invalid login------")
-        driver = edge
+        driver = chrome
         driver.get(self.page_url)
         self.index_page = IndexPage(driver)
         self.index_page.get_login_popup()
@@ -55,6 +55,6 @@ class TestIndexPage:
                 or alert.text == "Wrong password."):
             assert True
         else:
-            driver.save_screenshot('.\\test_demoblaze\\screenshots\\test_admin_login.png')
+            driver.save_screenshot('test_demoblaze/screenshots/test_admin_login.png')
             assert False
         alert.accept()
