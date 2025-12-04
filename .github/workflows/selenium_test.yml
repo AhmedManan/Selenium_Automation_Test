@@ -1,34 +1,46 @@
-name: Python Selenium Test
+name: Python Selenium Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
-  workflow_dispatch: # Allows manual run
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
-  run-tests:
+  test:
+    # Set a timeout in case tests hang
+    timeout-minutes: 15
+    # Use a fresh Ubuntu runner machine
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4 # 1. Check out code
+    - name: 🔑 Checkout repository
+      uses: actions/checkout@v4
 
-    - name: Set up Python
+    - name: 💻 Set up Python
+      # A stable Python version
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
-    # 2. Install Chrome and WebDriver (using a pre-built action is often easier)
-    - name: Install Google Chrome
+    - name: 🔧 Install Python Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
+
+    - name: 🌐 Install Google Chrome Browser
       run: |
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
-    - name: Install Dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -r requirements.txt # Include selenium and webdriver-manager (optional but helpful)
+    - name: ▶️ Run Selenium tests with Pytest
+      run: pytest --html=selenium-report/index.html --self-contained-html
 
-    - name: Execute Selenium Script
-      run: python your_test_script.py
+    - name: ⬆️ Upload Test Report (Artifact)
+      uses: actions/upload-artifact@v4
+      if: ${{ always() }}
+      with:
+        name: selenium-test-report
+        path: selenium-report/
+        retention-days: 30
