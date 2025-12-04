@@ -15,6 +15,9 @@ class TestIndexPage:
     invalid_login_data = ReadConfig.get_invalid_login_data()
     logger = LogMaker.generate_log()
 
+    # -------------------------------------------------
+    # test cases
+    # -------------------------------------------------
 
     def test_title_verification(self, chrome):
         driver = chrome
@@ -47,7 +50,11 @@ class TestIndexPage:
         self.index_page.enter_password(password)
         self.index_page.click_login()
         alert = WebDriverWait(driver,10).until(expected_conditions.alert_is_present())
-        assert (alert.text == "Please fill out Username and Password."
+        if (alert.text == "Please fill out Username and Password."
                 or alert.text == "User does not exist."
-                or alert.text == "Wrong password.")
+                or alert.text == "Wrong password."):
+            assert True
+        else:
+            driver.save_screenshot('.\\test_demoblaze\\screenshots\\test_admin_login.png')
+            assert False
         alert.accept()

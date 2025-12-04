@@ -10,6 +10,10 @@ class IndexPage:
     button_login_xpath= "//button[text()='Log in']"
     logged_in_user_xpath = '//*[@id="nameofuser"]'
 
+    # -------------------------------------------------
+    # page actions
+    # -------------------------------------------------
+
     def __init__(self, driver):
         self.driver = driver
     def get_login_popup(self):
