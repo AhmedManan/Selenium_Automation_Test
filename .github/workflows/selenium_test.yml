@@ -13,6 +13,14 @@ jobs:
     timeout-minutes: 15
     # Use a fresh Ubuntu runner machine
     runs-on: ubuntu-latest
+    # 🚨 ENVIRONMENT VARIABLES BLOCK
+    env:
+      # Non-sensitive configuration data
+      login_page_url: https://demoblaze.com/index.html
+
+      # Need to create these secrets in repository settings:
+      DEMOBLAZE_USERNAME: ${{ secrets.DEMOBLAZE_USERNAME }}
+      DEMOBLAZE_PASSWORD: ${{ secrets.DEMOBLAZE_PASSWORD }}
 
     steps:
       - name: Checkout repository

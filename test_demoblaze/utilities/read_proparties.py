@@ -7,7 +7,7 @@ class ReadConfig:
 
     @staticmethod
     def get_login_page_url():
-        url = config.get('login info','login_page_url')
+        url = config.get('Login_Info','login_page_url')
         return url
 
     # @staticmethod
