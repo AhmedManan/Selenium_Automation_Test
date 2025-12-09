@@ -10,15 +10,15 @@ class ReadConfig:
         url = config.get('login info','login_page_url')
         return url
 
-    @staticmethod
-    def get_username():
-        username = config.get('login info','username')
-        return username
-
-    @staticmethod
-    def get_password():
-        password = config.get('login info','password')
-        return password
+    # @staticmethod
+    # def get_username():
+    #     username = config.get('login info','username')
+    #     return username
+    #
+    # @staticmethod
+    # def get_password():
+    #     password = config.get('login info','password')
+    #     return password
 
     @staticmethod
     def get_invalid_login_data():

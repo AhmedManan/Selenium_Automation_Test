@@ -5,13 +5,14 @@ from ..base_pages.index_page import IndexPage
 from ..conftest import chrome
 from ..utilities.read_proparties import ReadConfig
 from ..utilities.custom_logger import LogMaker
+from ..utilities.get_env import username, password
 
 
 
 class TestIndexPage:
     page_url = ReadConfig.get_login_page_url()
-    username = ReadConfig.get_username()
-    password = ReadConfig.get_password()
+    username = username
+    password = password
     invalid_login_data = ReadConfig.get_invalid_login_data()
     logger = LogMaker.generate_log()
 
