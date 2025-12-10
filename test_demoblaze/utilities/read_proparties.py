@@ -5,10 +5,10 @@ config.read('.\\test_demoblaze\\configurations\\config.ini')
 
 class ReadConfig:
 
-    @staticmethod
-    def get_login_page_url():
-        url = config.get('Login_Info','login_page_url')
-        return url
+    # @staticmethod
+    # def get_login_page_url():
+    #     url = config.get('Login_Info','login_page_url')
+    #     return url
 
     # @staticmethod
     # def get_username():
