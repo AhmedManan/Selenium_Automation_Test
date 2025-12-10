@@ -1,7 +1,7 @@
 import configparser
 
 config = configparser.RawConfigParser()
-config.read('.\\test_demoblaze\\configurations\\config.ini')
+config.read('test_demoblaze/configurations/config.ini')
 
 class ReadConfig:
 
@@ -24,7 +24,7 @@ class ReadConfig:
     def get_invalid_login_data():
         import csv
         data = []
-        with open(".\\test_demoblaze\\test_data\\invalid_login_data.csv", newline='') as csvfile:
+        with open("test_demoblaze/test_data/invalid_login_data.csv", newline='') as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
                 data.append(row)
