@@ -16,7 +16,7 @@ jobs:
     # 🚨 ENVIRONMENT VARIABLES BLOCK
     env:
       # Non-sensitive configuration data
-      login_page_url: https://demoblaze.com/index.html
+      DEMOBLAZE_URL: https://demoblaze.com
 
       # Need to create these secrets in repository settings:
       DEMOBLAZE_USERNAME: ${{ secrets.DEMOBLAZE_USERNAME }}
