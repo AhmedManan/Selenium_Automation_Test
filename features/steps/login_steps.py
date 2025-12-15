@@ -1,4 +1,6 @@
 from behave import *
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 from pages.demoblaze.index_page import IndexPage
 from utilities.get_env import username, password, base_url
 
@@ -24,6 +26,17 @@ def step_impl(context):
     index_page.enter_password(password)
 
 
+@when('user enters username "{username}" and password "{password}"')
+def step_impl(context, username, password):
+    driver = context.driver
+    index_page = IndexPage(driver)
+
+    index_page.get_login_popup()
+    # Use the injected parameters
+    index_page.enter_username(username)
+    index_page.enter_password(password)
+
+
 @When('click on the login button')
 def step_impl(context):
     driver = context.driver
@@ -45,3 +58,19 @@ def step_impl(context):
 
     assert logged_in_user_text == expected_text, \
         f"Login failed. Expected user text: '{expected_text}', Actual: '{logged_in_user_text}'"
+
+
+@then('a login failure alert with the message "{expected_message}" is displayed')
+def step_impl(context, expected_message):
+    driver = context.driver
+
+    # Wait for the alert to appear (Necessary for Selenium)
+    alert = WebDriverWait(driver, 10).until(expected_conditions.alert_is_present())
+    actual_message = alert.text
+
+    # Assert the alert message matches the expected message from the table
+    assert actual_message == expected_message, \
+        f"Alert message mismatch. Expected: '{expected_message}', Actual: '{actual_message}'"
+
+    # Accept the alert to continue/end the scenario
+    alert.accept()
