@@ -1,11 +1,7 @@
-import pytest
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from ..base_pages.product_page import ProductPage
-from ..conftest import chrome
-from ..utilities.read_proparties import ReadConfig
-from ..utilities.custom_logger import LogMaker
-from ..utilities.get_env import username, password, base_url
+from pages.demoblaze.product_page import ProductPage
+from conftest import chrome
+from utilities.custom_logger import LogMaker
+from utilities.get_env import username, password, base_url
 
 
 

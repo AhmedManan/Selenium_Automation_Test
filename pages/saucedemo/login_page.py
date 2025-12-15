@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
+from pages.saucedemo.base_page import BasePage
 
 class LoginPage(BasePage):
     USERNAME_INPUT = (By.ID, "user-name")

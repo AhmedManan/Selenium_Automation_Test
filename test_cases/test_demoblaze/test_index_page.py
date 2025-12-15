@@ -1,16 +1,16 @@
 import pytest
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from ..base_pages.index_page import IndexPage
-from ..conftest import chrome
-from ..utilities.read_proparties import ReadConfig
-from ..utilities.custom_logger import LogMaker
-from ..utilities.get_env import username, password, base_url
+from pages.demoblaze.index_page import IndexPage
+from conftest import chrome
+from utilities.read_proparties import ReadConfig
+from utilities.custom_logger import LogMaker
+from utilities.get_env import username, password, base_url
 
 
 
 class TestIndexPage:
-    page_url = base_url
+    page_url = base_url+'/index.html'
     username = username
     password = password
     invalid_login_data = ReadConfig.get_invalid_login_data()
@@ -37,7 +37,7 @@ class TestIndexPage:
         if self.index_page.get_logged_in_user() == f"Welcome {self.username}":
             assert True
         else:
-            driver.save_screenshot('test_demoblaze/screenshots/test_admin_login.png')
+            driver.save_screenshot('screenshots/test_admin_login.png')
             assert False
 
     @pytest.mark.parametrize("username, password", invalid_login_data)
