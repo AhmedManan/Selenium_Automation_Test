@@ -1,6 +1,6 @@
 # Selenium Automation Test
 
-In this repository I have conduct Automation tests on multiple web application, specificly [DemoBlaze](https://demoblaze.com/index.html) & [SauceDemo](https://www.saucedemo.com/). To conduct the test I used Python, Pytest, Selenium & POM (page object model) framework.
+In this repository I have conduct Automation tests on multiple web application, specificly [DemoBlaze](https://demoblaze.com/index.html) & [SauceDemo](https://www.saucedemo.com/). To conduct the tests I used Python, Pytest, Selenium. To ensure Behavior-Driven Development (BDD) testing I used Behave. In both cases I implemented POM (page object model) structure.
 
 ## 🔎 View Live Report
 
@@ -9,25 +9,32 @@ In this repository I have conduct Automation tests on multiple web application, 
 
 
 ## Table Of Content
-- [🔎 View Live Report](#-view-live-report)
-- [Test Cases](#-test-cases)
-    - [Test Execution Videos](#-test-execution-videos)
-    - [Test Case Details](#-test-case-details)
-- [Report Genaration](#-report-genaration)
+- [ View Live Report](#view-live-report)
+- [Test Cases](#Test-Cases)
+    - [Pytest Test List](#Pytest-Test-List)
+    - [Behave BDD Test List](#Behave-BDD-Test-List)
+- [Report Generation](#Report-Generation)
 
 
 ## Test Cases
 
-### Test Execution Videos
+### Pytest Test List
 
-| Serial | Test Script Name / Details        | Execution Video |
-| ------ | --------------------------------- | --------------- |
-| 1      | Test Demoblaze Login              | [Base](/videos/base.mp4) |
+| Serial | Test Script Name / Details                                  | Status                   |
+|--------|-------------------------------------------------------------|--------------------------|
+| 01     | Test Demoblaze login with valid credentials                 | ✔️ |
+| 02     | Test Demoblaze login with invalid credentials               | ✔️ |
+| 03     | Test saucedemo login with valid credentials                 | ✔️ |
+| 04     | Test saucedemo login with invalid credentials               | ✔️ |
+| 05     | Test Saucedemo cart product adding & removing functionality | ✔️ |
 
-### Test Case Details
-#### Test DemoBlaze Login Module
+### Behave BDD Test List
+| Serial | Test Script Name / Details                                 | Status                   |
+|--------|------------------------------------------------------------|--------------------------|
+| 01     | Test Demoblaze login with valid credentials                | ✔️ |
+| 02     | Test Demoblaze login with invalid parameterize credentials | ✔️ |
 
-## Report Genaration
+## Report Generation
 
 #### Allure Report Generation
 
